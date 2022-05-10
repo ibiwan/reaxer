@@ -1,0 +1,19 @@
+{
+  "name": "reaxer",
+  "version": "1.0.0",
+  "description": "react-redux with hooks generator",
+  "main": "src/index.js",
+  "type": "module",
+  "author": "J Ibi-Wan K",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "runOnce":"time node --experimental-specifier-resolution node ./src -s sample-project-schema.yml",
+    "watch":"nodemon -w sample-project-schema.yml -w src --experimental-specifier-resolution node ./src -- -s sample-project-schema.yml"
+},
+"dependencies": {
+    "command-line-args": "^5.2.1",
+    "nodemon": "^2.0.16",
+    "yaml": "^2.0.1"
+  }
+}

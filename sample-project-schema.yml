@@ -1,0 +1,135 @@
+name: Plunder
+features:
+  board:
+    components:
+      board: Board
+      grid: Grid
+      ruler: Ruler
+      island: Island
+      storm: Storm
+      treasure: Treasure
+      sandBar: SandBar
+      playerArea: PlayerArea
+    store:
+      values:
+        islands:
+          - cells: ["A1"]
+            ports: ["A2"]
+            type: empty
+            skulls: 0
+        sandBars:
+          - startNwOfCell: B1
+            endNwOfCell: A1
+        xSpots:
+          - A1
+          - B2
+  players:
+    components:
+      turnDisplay: TurnDisplay
+    store:
+      values:
+        availableColors:
+          - red
+          - yellow
+          - green
+          - purple
+          - black
+          - brown
+        plunderCards:
+          white: 0
+        ships:
+          white:
+            - id: "3.141592653589"
+              position: A1
+              lives: 3
+              masts: 0
+              cannons: 0
+        resources:
+          - playerColor: "white"
+            rum: 0
+            wood: 0
+            iron: 0
+            gold: 0
+      selectors:
+        - playerColors
+        - score
+        - ships
+        - resources
+      actions:
+        - setNumPlayers
+        - setDefaultsForPlayer
+        - addShipForPlayer
+        - moveShipForPlayer
+        - removeShipForPlayer
+        - addResourcesForPlayer
+        - removeResourcesForPlayer
+  cards:
+    components:
+      plunderCard: PlunderCard
+      turnCard: TurnCard
+      priceCard: PriceCard
+      actionsCard: ActionsCard
+  pieces:
+    components:
+      ship: Ship
+      flag: Flag
+      xSpot: XSpot
+  engine:
+    components:
+    store:
+      values:
+        mode: setupNPlayers
+        modeSequence:
+          -
+        turnOrder:
+          - white
+        currentPlayer: null
+        hasRolledMoves: false
+        movesRemaining: null
+        hasAttackedIslands: []
+        hasAttackedShips: []
+      selectors:
+      actions:
+        - setCurrentPlayer
+        - setHasRolledMoves
+        - setMovesRemaining
+        - setShipAttackedIsland
+        - setShipAttackedShip
+  box:
+    store:
+      values:
+        tiles:
+          - id: 1
+            side: 1
+            islands:
+              - cells: [B2, C2, B3, D3]
+                ports: [C3, D2]
+                type: player
+                skulls: 3
+              - cells: [E5]
+                ports: [E5]
+                type: player
+                skulls: 1
+              - cells: [E1]
+                ports: []
+                type: empty
+                skulls: 0
+              - cells: [A6]
+                ports: []
+                type: empty
+                skulls: 0
+              - cells: [D6]
+                ports: []
+                type: empty
+                skulls: 0
+            sandBars: 
+              - startNwOfCell: B1
+                endNwOfCell: A1
+        events:
+          - name: ""
+            count: 5
+            quote: "yarrr"
+            effect: "EXTURN"
+  icons:
+    components:
+      tile: Tile
